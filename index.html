@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gilbert Renteria — Operator who builds</title>
+<meta name="description" content="Gilbert Renteria: 11 years running businesses in construction and hospitality, now building AI-assisted business software on Cloudflare. Houston, TX · remote.">
+<meta property="og:title" content="Gilbert Renteria — Operator who builds">
+<meta property="og:description" content="11 years as an owner-operator. Now shipping AI-assisted business tools: Cloudflare, SQL, Python, Tableau.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f6f4ef; --surface: #ffffff; --surface-alt: #fbfaf7;
+    --text: #201f1c; --muted: #6e6a62; --border: #e6e1d6;
+    --accent: #2b5d63; --accent-soft: #dfeae9; --accent-contrast: #ffffff;
+    --lime: #d9e021; --ink: #141413;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17181a; --surface: #201f1c; --surface-alt: #242320;
+      --text: #f1efe9; --muted: #a39d90; --border: #37342d;
+      --accent: #6fb3ac; --accent-soft: #223634; --accent-contrast: #0d1615;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  :root { --r: 18px; --r-sm: 12px; --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px -12px rgba(20,20,19,0.18); --shadow-hover: 0 2px 4px rgba(0,0,0,0.05), 0 18px 40px -16px rgba(20,20,19,0.28); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.6); --shadow-hover: 0 2px 4px rgba(0,0,0,0.35), 0 18px 40px -16px rgba(0,0,0,0.7); } }
+  :root[data-theme="dark"] { --bg: #17181a; --surface: #201f1c; --surface-alt: #242320; --text: #f1efe9; --muted: #a39d90; --border: #37342d; --accent: #6fb3ac; --accent-soft: #223634; --accent-contrast: #0d1615; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.6); --shadow-hover: 0 2px 4px rgba(0,0,0,0.35), 0 18px 40px -16px rgba(0,0,0,0.7); color-scheme: dark; }
+  :root[data-theme="light"] { --bg: #f6f4ef; --surface: #ffffff; --surface-alt: #fbfaf7; --text: #201f1c; --muted: #6e6a62; --border: #e6e1d6; --accent: #2b5d63; --accent-soft: #dfeae9; --accent-contrast: #ffffff; color-scheme: light; }
+  body { transition: background-color 0.25s ease, color 0.25s ease; }
+  html, body { overflow-x: hidden; }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  /* theme toggle */
+  .theme-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; transition: transform 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
+  .theme-btn:hover { color: var(--text); border-color: var(--accent); transform: rotate(15deg); }
+  .theme-btn svg { width: 16px; height: 16px; }
+  .theme-btn .moon { display: none; }
+  :root[data-theme="dark"] .theme-btn .sun { display: none; }
+  :root[data-theme="dark"] .theme-btn .moon { display: block; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .theme-btn .sun { display: none; } :root:not([data-theme="light"]) .theme-btn .moon { display: block; } }
+
+  /* hero */
+  .hero { position: relative; }
+  .hero::before { content: ""; position: absolute; z-index: -1; top: -80px; left: -120px; width: 560px; height: 460px; background: radial-gradient(closest-side, rgba(43,93,99,0.16), rgba(43,93,99,0) 72%); filter: blur(40px); pointer-events: none; }
+  :root[data-theme="dark"] .hero::before { background: radial-gradient(closest-side, rgba(111,179,172,0.14), rgba(111,179,172,0) 72%); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero::before { background: radial-gradient(closest-side, rgba(111,179,172,0.14), rgba(111,179,172,0) 72%); } }
+  .hero-row, .hero h1, .hero p.lead, .hero .btns, .hero .facts { position: relative; }
+  .hero-row { display: flex; align-items: center; gap: 28px; }
+  .avatar { width: 132px; height: 132px; border-radius: 50%; flex: 0 0 auto; border: 4px solid var(--surface); box-shadow: var(--shadow); object-fit: cover; }
+  @media (max-width: 640px) { .hero-row { flex-direction: column; align-items: flex-start; gap: 18px; } .avatar { width: 96px; height: 96px; } }
+  .status-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 8px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 16px; box-shadow: var(--shadow); }
+  .status-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: #2fa06a; box-shadow: 0 0 0 4px rgba(47,160,106,0.18); }
+
+  /* browser frame for screenshots */
+  .frame { border-radius: 14px; border: 1px solid var(--border); background: var(--surface-alt); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .frame:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .frame .bar { display: flex; gap: 6px; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--surface); }
+  .frame .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--border); display: block; }
+  .frame .bar i:nth-child(1) { background: #f26d5b; } .frame .bar i:nth-child(2) { background: #f5bf4f; } .frame .bar i:nth-child(3) { background: #5fc26e; }
+  .frame img { display: block; width: 100%; height: auto; border: none; border-radius: 0; transition: transform 0.5s ease; }
+  .frame:hover img { transform: scale(1.02); }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: "IBM Plex Sans", -apple-system, Segoe UI, sans-serif; font-size: 16px; line-height: 1.55; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+  nav { position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 10; }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 58px; }
+  nav .brand { font-weight: 700; letter-spacing: -0.01em; color: var(--text); white-space: nowrap; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 18px; margin: 0; padding: 0; font-size: 0.8rem; }
+  nav ul a { color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  nav ul a:hover { color: var(--text); text-decoration: none; }
+  @media (max-width: 560px) { nav ul li.hide-sm { display: none; } nav ul { gap: 12px; font-size: 0.74rem; } }
+
+  .hero { padding-block: 72px 56px; }
+  .hero .kicker { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 18px; max-width: 18ch; }
+  .hero p.lead { font-size: 1.12rem; color: var(--muted); max-width: 60ch; margin: 0 0 26px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease; font-weight: 600; font-size: 0.93rem; border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+  .btn:hover { text-decoration: none; background: var(--surface-alt); transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn.primary { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 30px; font-size: 0.88rem; color: var(--muted); }
+  .facts span::before { content: "•"; margin-right: 8px; color: var(--accent); }
+
+  section { padding: 44px 0; }
+  section h2 { font-size: 1.55rem; letter-spacing: -0.01em; margin: 0 0 6px; }
+  section .sub { color: var(--muted); margin: 0 0 26px; max-width: 64ch; }
+
+  .project { display: grid; grid-template-columns: 1.15fr 1fr; gap: 26px; align-items: start; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; margin-bottom: 22px; box-shadow: var(--shadow); }
+  @media (max-width: 820px) { .project { grid-template-columns: 1fr; } }
+  .project .shots { display: grid; gap: 10px; }
+  .project .shots img { width: 100%; height: auto; display: block; }
+  .project .shots .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .project h3 { margin: 0 0 4px; font-size: 1.3rem; letter-spacing: -0.01em; }
+  .project .role { color: var(--muted); font-size: 0.9rem; margin-bottom: 12px; }
+  .project .status { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-left: 8px; vertical-align: middle; }
+  .project p { margin: 0 0 12px; }
+  .project ul { margin: 0 0 14px; padding-left: 18px; }
+  .project li { margin-bottom: 6px; }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 16px; }
+  .stack span { font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; padding: 4px 10px; border-radius: 999px; background: var(--surface-alt); border: 1px solid var(--border); color: var(--muted); }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .links a { font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 999px; transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease; border: 1px solid var(--border); background: var(--surface-alt); color: var(--text); }
+  .links a:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .links a .arrow { color: var(--accent); }
+  .note { font-size: 0.84rem; color: var(--muted); margin-top: 10px; }
+
+  .more { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 18px; box-shadow: var(--shadow); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .card h4 { margin: 0 0 6px; font-size: 1rem; }
+  .card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+  .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .how .card h4 { color: var(--accent); }
+
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--border); }
+  .timeline li { position: relative; padding: 0 0 22px 22px; }
+  .timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
+  .timeline .when { font-family: "IBM Plex Mono", monospace; font-size: 0.76rem; color: var(--muted); }
+  .timeline .what { font-weight: 600; }
+  .timeline .where { color: var(--muted); }
+  .timeline p { margin: 4px 0 0; color: var(--muted); font-size: 0.93rem; max-width: 70ch; }
+  .two { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; }
+  @media (max-width: 820px) { .two { grid-template-columns: 1fr; } }
+  .skills h4 { margin: 18px 0 8px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .skills h4:first-child { margin-top: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips span { font-size: 0.84rem; padding: 5px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); transition: border-color 0.15s ease, transform 0.15s ease; }
+  .chips span:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+  .contact { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); box-shadow: var(--shadow); padding: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
+  .contact h2 { margin: 0 0 4px; }
+  .contact p { margin: 0; color: var(--muted); }
+  footer { padding: 30px 0 50px; color: var(--muted); font-size: 0.84rem; }
+
+  /* ---- Ask Gilbert chat ---- */
+  .ask-fab { position: fixed; right: 18px; bottom: 18px; z-index: 50; display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px 12px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: inherit; font-weight: 600; font-size: 0.92rem; cursor: pointer; box-shadow: var(--shadow-hover); transition: transform 0.15s ease; }
+  .ask-fab:hover { transform: translateY(-2px); }
+  .ask-fab img { width: 30px; height: 30px; border-radius: 50%; }
+  .ask-fab .badge { width: 9px; height: 9px; border-radius: 50%; background: #2fa06a; box-shadow: 0 0 0 3px rgba(47,160,106,0.2); }
+  .ask-panel { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: min(400px, calc(100vw - 36px)); height: min(600px, calc(100vh - 36px)); display: none; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 22px; box-shadow: var(--shadow-hover); overflow: hidden; transform-origin: bottom right; }
+  .ask-panel.open { display: flex; animation: askIn 0.22s ease; }
+  @keyframes askIn { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: none; } }
+  .ask-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--border); background: var(--surface-alt); }
+  .ask-head img { width: 34px; height: 34px; border-radius: 50%; }
+  .ask-head b { display: block; font-size: 0.95rem; }
+  .ask-head small { color: var(--muted); font-size: 0.76rem; }
+  .ask-close { margin-left: auto; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; font-size: 1rem; line-height: 1; }
+  .ask-close:hover { color: var(--text); border-color: var(--accent); }
+  .ask-log { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .msg { max-width: 86%; padding: 10px 13px; border-radius: 18px; font-size: 0.92rem; line-height: 1.45; white-space: pre-wrap; word-wrap: break-word; }
+  .msg.bot { align-self: flex-start; background: var(--surface-alt); border: 1px solid var(--border); border-bottom-left-radius: 6px; }
+  .msg.user { align-self: flex-end; background: var(--accent); color: var(--accent-contrast); border-bottom-right-radius: 6px; }
+  .msg.typing span { display: inline-block; width: 6px; height: 6px; margin-right: 4px; border-radius: 50%; background: var(--muted); animation: blink 1.2s infinite ease-in-out; }
+  .msg.typing span:nth-child(2) { animation-delay: 0.2s; } .msg.typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
+  .ask-sugg { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px; }
+  .ask-sugg button { font-family: inherit; font-size: 0.78rem; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; }
+  .ask-sugg button:hover { border-color: var(--accent); color: var(--accent); }
+  .ask-form { display: flex; gap: 8px; padding: 10px 12px 12px; border-top: 1px solid var(--border); background: var(--surface); }
+  .ask-form input { flex: 1; font-family: inherit; font-size: 0.92rem; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-alt); color: var(--text); outline: none; }
+  .ask-form input:focus { border-color: var(--accent); }
+  .ask-form button { width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--accent); color: var(--accent-contrast); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+  .ask-form button:disabled { opacity: 0.5; cursor: default; }
+  .ask-note { font-size: 0.7rem; color: var(--muted); text-align: center; padding: 0 12px 10px; }
+  @media (prefers-reduced-motion: reduce) { .ask-panel.open { animation: none; } .msg.typing span { animation: none; opacity: 0.6; } }
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Gilbert Renteria</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li class="hide-sm"><a href="#how">How I Work</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="hide-sm"><a href="https://github.com/gilbertrenteria" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="hero-row">
+    <img class="avatar" src="img/gilbert.png" alt="Gilbert Renteria" width="132" height="132">
+    <div>
+      <div class="status-pill"><span class="dot"></span> Available Now &middot; Remote &middot; Ops, Data &amp; AI</div>
+      <div class="kicker">Operations · Data · AI-Assisted Software</div>
+    </div>
+  </div>
+  <h1>I ran businesses for 11 years. Now I build the software they need.</h1>
+  <p class="lead">Owner-operator in construction and hospitality — P&amp;L, crews, vendors, cash flow — turned builder. I ship working business tools on Cloudflare with the Claude API, and I work in SQL, Python, and Tableau. Everything below is live and in use.</p>
+  <div class="btns">
+    <a class="btn primary" href="#work">See the work</a>
+    <a class="btn" href="https://github.com/gilbertrenteria" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/gilbertrenteria" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="Gilbert-Renteria-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+  </div>
+  <div class="facts">
+    <span>Houston, TX · remote</span>
+    <span>English &amp; Spanish</span>
+    <span>UT Dallas Data Analytics certificate (2026)</span>
+    <span>A.S. Business Administration</span>
+  </div>
+</header>
+
+<section id="work" class="wrap">
+  <h2>Work</h2>
+  <p class="sub">Two production systems built end-to-end — requirements, design, build, deploy — for real businesses. I direct AI-assisted development and own the result: the data model, the compliance logic, and what happens when a customer actually uses it.</p>
+
+  <article class="project reveal">
+    <div class="shots">
+      <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/flash-home.jpg" alt="Flash Custom Apparel marketing site: bold lime hero reading Print it. Wear it. Own it." loading="lazy"></div>
+      <div class="pair">
+        <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/flash-chat.jpg" alt="FlashChat AI assistant open on the site, offering quote requests and product answers" loading="lazy"></div>
+        <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/flash-dashboard.jpg" alt="Flash business dashboard: order pipeline breakdown, split by division, and alerts for overdue orders" loading="lazy"></div>
+      </div>
+    </div>
+    <div>
+      <h3>Flash Custom Apparel &amp; Signs <span class="status">Live</span></h3>
+      <div class="role">Marketing site, AI chat, quote intake, and the operations dashboard behind them — for a Houston print shop.</div>
+      <p>A customer lands on the site, asks the bilingual AI assistant about pricing or turnaround, and requests a quote. The owner gets an email and a text, sees the inquiry on a pipeline board, and can step into the chat mid-conversation when a human answer is better than an AI one.</p>
+      <ul>
+        <li><b>FlashChat</b> — Claude-powered assistant that answers product and pricing questions in English or Spanish, captures quote requests, and hands off to a human with the full transcript.</li>
+        <li><b>Operations dashboard</b> — order pipeline (New Inquiry → Quoted → Paid → Vendor → QC → Shipped), win/loss reporting, overdue alerts, vendor management, and live visitor presence.</li>
+        <li><b>Notifications</b> — email with attachments via Resend, SMS via Twilio, all triggered from serverless functions.</li>
+        <li><b>Data</b> — a 12-table SQLite schema on Cloudflare D1 holding orders, vendors, chat sessions and messages, and quick replies.</li>
+      </ul>
+      <div class="stack"><span>Cloudflare Pages Functions</span><span>Cloudflare D1</span><span>Anthropic Claude API</span><span>Resend</span><span>Twilio</span><span>SQL</span><span>JavaScript</span></div>
+      <div class="links">
+        <a href="https://flashcustomprint.com" target="_blank" rel="noopener">Visit the site <span class="arrow">→</span></a>
+        <a href="https://flashcustomprint.com/chat" target="_blank" rel="noopener">Try FlashChat <span class="arrow">→</span></a>
+        <a href="https://github.com/gilbertrenteria/flash-custom-print-showcase-version" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+      </div>
+      <div class="note">The dashboard is the owner's private workspace, so it's shown as a screenshot rather than a link.</div>
+    </div>
+  </article>
+
+  <article class="project reveal">
+    <div class="shots">
+      <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/hellobob.jpg" alt="HelloBob landing page: Every unanswered message is a job for you" loading="lazy"></div>
+    </div>
+    <div>
+      <h3>HelloBob — AI Virtual Front Desk <span class="status">Open Source</span></h3>
+      <div class="role">Missed-call text-back and appointment booking for home-service businesses (HVAC first).</div>
+      <p>When a call goes unanswered, HelloBob texts the caller back within seconds, runs the conversation over SMS, qualifies the job, and books it against the business's real availability. The owner sees every lead, booking, and review request on a dashboard.</p>
+      <ul>
+        <li><b>Claude with tool use</b> — the model calls <span class="mono">check_availability</span> and <span class="mono">book_appointment</span>; the booking engine, not the model, decides what's actually open.</li>
+        <li><b>Compliance gate</b> — consent types, quiet hours, per-state overrides, and STOP handling are enforced in code before any message is sent, so texting rules don't depend on the AI behaving.</li>
+        <li><b>Zero dependencies</b> — Node 22 with the built-in SQLite, HTTP, and fetch; hand-written Twilio and Anthropic clients; 46 automated tests.</li>
+        <li><b>Owner dashboard</b> — invite-based login, hashed passwords, HttpOnly sessions.</li>
+      </ul>
+      <div class="stack"><span>Node.js 22</span><span>SQLite</span><span>Anthropic Claude API</span><span>Twilio</span><span>Resend</span><span>node --test</span></div>
+      <div class="links">
+        <a href="https://gilbertrenteria.github.io/hellobob-backend/" target="_blank" rel="noopener">Demo site <span class="arrow">→</span></a>
+        <a href="https://github.com/gilbertrenteria/hellobob-backend" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </article>
+
+  <div class="more">
+    <div class="card reveal">
+      <h4>Job Search Tracker</h4>
+      <p>A live-database tracker for applications and outreach with a scheduled AI task that reads it every morning and sends a reminder of what's due. Built for my own search; it's how this site got planned.</p>
+    </div>
+    <div class="card reveal">
+      <h4>Victory Boxing — Client Proposal</h4>
+      <p>Bilingual marketing site, an owner-dashboard mockup, and an automated messaging plan, packaged as a pitch for a Houston gym.</p>
+    </div>
+    <div class="card reveal">
+      <h4>Customer Analytics — UT Dallas Capstone</h4>
+      <p>2,240 retail customers, 5 campaigns: cleaned the data in SQL, analyzed it in Python, and built an interactive dashboard that shows which customers respond and what the next campaign should do. A quarter of customers drive 61% of spend.</p>
+      <div class="links" style="margin-top:12px">
+        <a href="/customer-analytics/">Open the dashboard <span class="arrow">→</span></a>
+        <a href="https://github.com/gilbertrenteria/customer-analytics-capstone" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="wrap reveal">
+  <h2>How I Work</h2>
+  <p class="sub">The software is only useful if it survives contact with a real business. That's the part I've been doing for a decade.</p>
+  <div class="how">
+    <div class="card reveal"><h4>Start From the Workflow</h4><p>Every tool above began as a process I'd run by hand — quotes, scheduling, vendor follow-up, chasing invoices. I build the version of that process that doesn't need me in the loop.</p></div>
+    <div class="card reveal"><h4>Keep the Rules Out of the Model</h4><p>AI handles the conversation. Code handles the rules — who can be texted, when, what's bookable, what a quote must contain. That's why the compliance gate and the booking engine are deterministic.</p></div>
+    <div class="card reveal"><h4>Ship, Measure, Adjust</h4><p>Real usage beats a spec. I put the tool in front of the business, watch what breaks, and fix the next thing. The dashboards exist so the owner (often me) can see it happening.</p></div>
+  </div>
+</section>
+
+<section id="background" class="wrap reveal">
+  <h2>Background</h2>
+  <p class="sub">Eleven years running the numbers, the crews, and the customers — the context every one of these tools comes from.</p>
+  <div class="two">
+    <ul class="timeline">
+      <li><div class="when">2024 – 2026</div><div class="what">Operations Manager (Owner) <span class="where">· Elite Builders Group, Houston</span></div>
+        <p>Ran a disaster-relief and structural-restoration operation: 4–6 specialized crews across 4–5 simultaneous residential rebuilds. Built the scope-control audit, change-request checklist, contractor pre-qualification process, and the cash-flow tracking that kept projects funded as volume scaled.</p></li>
+      <li><div class="when">2018 – 2024</div><div class="what">General Manager (Owner) <span class="where">· Little Cancun, Houston</span></div>
+        <p>Founded and grew an independent restaurant, moved it onto POS systems and used the data to set pricing, staffing, and purchasing, redesigned the delivery model within weeks of COVID restrictions, then trained a successor GM and sold the business to him.</p></li>
+      <li><div class="when">2015 – 2018</div><div class="what">Commercial Sales Executive <span class="where">· Infinity Truck Sales, Houston</span></div>
+        <p>Managed the full B2B deal cycle for commercial vehicles and built cross-border client pipelines into Mexico and Costa Rica.</p></li>
+      <li><div class="when">2012 – 2015</div><div class="what">Operations &amp; Account Associate <span class="where">· Marcor Logistics, Houston</span></div>
+        <p>Coordinated 10–20 third-party trucking vendors for overflow capacity, digitized delivery and billing records, and tracked Port of Houston drayage schedules to avoid demurrage.</p></li>
+    </ul>
+    <div class="skills">
+      <h4>Build</h4>
+      <div class="chips"><span>Cloudflare Workers / Pages</span><span>Cloudflare D1</span><span>Node.js</span><span>JavaScript</span><span>SQLite</span><span>Anthropic Claude API</span><span>Twilio</span><span>Resend</span><span>Git</span></div>
+      <h4>Data</h4>
+      <div class="chips"><span>SQL</span><span>Python</span><span>Tableau</span><span>Excel / Google Sheets</span><span>Forecasting</span><span>KPI design</span><span>Dashboards</span></div>
+      <h4>Operate</h4>
+      <div class="chips"><span>P&amp;L ownership</span><span>Process &amp; SOP design</span><span>Vendor &amp; contractor management</span><span>Scheduling &amp; capacity</span><span>Cash-flow management</span><span>Bilingual (EN/ES)</span></div>
+      <h4>Education</h4>
+      <div class="chips"><span>Data Analytics Certificate — UT Dallas / Fullstack Academy, 2026</span><span>A.S. Business Administration — San Jacinto College</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap reveal">
+  <div class="contact">
+    <div>
+      <h2>Let's Talk</h2>
+      <p>Open to remote operations, revenue operations, data, and AI-automation roles. Happy to walk through any of the systems above.</p>
+    </div>
+    <div class="btns">
+      <a class="btn primary" href="mailto:gilbertrenteria@yahoo.com">gilbertrenteria@yahoo.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/gilbertrenteria" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/gilbertrenteria" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  // theme: remembered per browser; falls back to system preference
+  var root=document.documentElement, key='theme';
+  try{ var saved=localStorage.getItem(key); if(saved==='dark'||saved==='light') root.setAttribute('data-theme',saved); }catch(e){}
+  var btn=document.getElementById('themeBtn');
+  if(btn){ btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    var sysDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark=cur?cur==='dark':sysDark;
+    var next=isDark?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{ localStorage.setItem(key,next); }catch(e){}
+  }); }
+  // reveal on scroll
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in'); }); }
+})();
+</script>
+
+<button class="ask-fab" id="askFab" type="button" aria-haspopup="dialog" aria-controls="askPanel">
+  <img src="img/gilbert.png" alt=""><span class="badge" aria-hidden="true"></span> Ask Gilbert
+</button>
+<div class="ask-panel" id="askPanel" role="dialog" aria-label="Ask Gilbert" aria-modal="false">
+  <div class="ask-head">
+    <img src="img/gilbert.png" alt="">
+    <div><b>Ask Gilbert</b><small>An AI assistant that knows my work. Answers in seconds.</small></div>
+    <button class="ask-close" id="askClose" type="button" aria-label="Close">&times;</button>
+  </div>
+  <div class="ask-log" id="askLog">
+    <div class="msg bot">Hi — I'm an assistant Gilbert built for this site. Ask me about the tools he's shipped, how he ran his businesses, or how he'd approach an ops or data problem.</div>
+  </div>
+  <div class="ask-sugg" id="askSugg">
+    <button type="button">What did he build for Flash?</button>
+    <button type="button">How does HelloBob avoid texting people illegally?</button>
+    <button type="button">Why no bachelor's degree?</button>
+    <button type="button">How would he fix a messy quoting process?</button>
+  </div>
+  <form class="ask-form" id="askForm" autocomplete="off">
+    <input id="askInput" type="text" maxlength="1200" placeholder="Ask anything about my work…" aria-label="Your question">
+    <button type="submit" id="askSend" aria-label="Send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4z"/></svg></button>
+  </form>
+  <div class="ask-note">AI-generated from Gilbert's resume and projects. For anything else, email gilbertrenteria@yahoo.com.</div>
+</div>
+
+<script>
+(function(){
+  var ENDPOINT = '/api/chat';
+  var fab=document.getElementById('askFab'), panel=document.getElementById('askPanel'), closeBtn=document.getElementById('askClose');
+  var log=document.getElementById('askLog'), form=document.getElementById('askForm'), input=document.getElementById('askInput'), send=document.getElementById('askSend'), sugg=document.getElementById('askSugg');
+  var history=[], busy=false;
+  function open(){ panel.classList.add('open'); fab.style.display='none'; setTimeout(function(){ input.focus(); }, 50); }
+  function close(){ panel.classList.remove('open'); fab.style.display=''; }
+  fab.addEventListener('click', open); closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && panel.classList.contains('open')) close(); });
+  function add(role, text){ var d=document.createElement('div'); d.className='msg '+role; d.textContent=text; log.appendChild(d); log.scrollTop=log.scrollHeight; return d; }
+  function typing(){ var d=document.createElement('div'); d.className='msg bot typing'; d.innerHTML='<span></span><span></span><span></span>'; log.appendChild(d); log.scrollTop=log.scrollHeight; return d; }
+  function ask(q){
+    q=(q||'').trim(); if(!q||busy) return;
+    busy=true; send.disabled=true; input.value=''; sugg.style.display='none';
+    add('user', q); history.push({role:'user', content:q});
+    var t=typing();
+    fetch(ENDPOINT, { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({ messages: history.slice(-8) }) })
+      .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, status:r.status, j:j}; }); })
+      .then(function(x){
+        t.remove();
+        var reply = (x.j && (x.j.reply || x.j.error)) || "Something went wrong — try again in a moment.";
+        if(x.status===404 || x.status===503) reply = "The chat isn't switched on yet — email gilbertrenteria@yahoo.com and Gilbert will answer personally.";
+        add('bot', reply); history.push({role:'assistant', content:reply});
+      })
+      .catch(function(){ t.remove(); add('bot', "I couldn't reach the server — try again in a moment, or email gilbertrenteria@yahoo.com."); })
+      .then(function(){ busy=false; send.disabled=false; input.focus(); });
+  }
+  form.addEventListener('submit', function(e){ e.preventDefault(); ask(input.value); });
+  sugg.addEventListener('click', function(e){ if(e.target.tagName==='BUTTON') ask(e.target.textContent); });
+})();
+</script>
+
+<footer class="wrap">© 2026 Gilbert Renteria · Houston, TX · Built by hand, deployed on Cloudflare Pages.</footer>
+
+</body>
+</html>
