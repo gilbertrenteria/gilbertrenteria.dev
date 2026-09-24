@@ -2,14 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gilbert Renteria — Operator who builds</title>
 <meta name="description" content="Gilbert Renteria: 11 years running businesses in construction and hospitality, now building AI-assisted business software on Cloudflare. Houston, TX · remote.">
 <meta property="og:title" content="Gilbert Renteria — Operator who builds">
 <meta property="og:description" content="11 years as an owner-operator. Now shipping AI-assisted business tools: Cloudflare, SQL, Python, Tableau.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://gilbertrenteria.dev/">
+<meta property="og:image" content="https://gilbertrenteria.dev/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gilbert Renteria — Operator who builds">
+<meta name="twitter:description" content="11 years as an owner-operator. Now shipping AI-assisted business tools: Cloudflare, SQL, Python, Tableau.">
+<meta name="twitter:image" content="https://gilbertrenteria.dev/img/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap">
 <style>
   :root {
     --bg: #f6f4ef; --surface: #ffffff; --surface-alt: #fbfaf7;
@@ -82,6 +93,20 @@
   nav ul a { color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
   nav ul a:hover { color: var(--text); text-decoration: none; }
   @media (max-width: 560px) { nav ul li.hide-sm { display: none; } nav ul { gap: 12px; font-size: 0.74rem; } }
+  @media (max-width: 430px) { nav .wrap { gap: 12px; } nav .brand { font-size: 0.94rem; } nav ul { gap: 10px; font-size: 0.7rem; } nav ul li.hide-xs { display: none; } }
+
+  /* US flag mark next to the name */
+  .flag { display: inline-block; height: 0.85em; width: auto; aspect-ratio: 19 / 10; vertical-align: middle; position: relative; top: -0.08em; margin-left: 0.4em; border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,0.12); flex: 0 0 auto; }
+  #intro .flag { height: 0.9em; box-shadow: 0 0 0 1px rgba(0,0,0,0.18); }
+
+  /* by the numbers */
+  .numbers { padding-block: 0 8px; }
+  .num-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  @media (max-width: 480px) { .num-grid { grid-template-columns: 1fr 1fr; } }
+  .num { padding: 16px 18px; }
+  .num:hover { transform: none; box-shadow: var(--shadow); }
+  .num .n { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 2rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--accent); }
+  .num .l { margin-top: 4px; font-size: 0.85rem; line-height: 1.35; color: var(--muted); }
 
   .hero { padding-block: 72px 56px; }
   .hero .kicker { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
@@ -138,6 +163,7 @@
   @media (max-width: 820px) { .two { grid-template-columns: 1fr; } }
   .skills h4 { margin: 18px 0 8px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
   .skills h4:first-child { margin-top: 0; }
+  .skills p { margin: 0; color: var(--muted); font-size: 0.93rem; max-width: 46ch; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
   .chips span { font-size: 0.84rem; padding: 5px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); transition: border-color 0.15s ease, transform 0.15s ease; }
   .chips span:hover { border-color: var(--accent); transform: translateY(-1px); }
@@ -180,16 +206,49 @@
   @media (prefers-reduced-motion: reduce) { .ask-panel.open { animation: none; } .msg.typing span { animation: none; opacity: 0.6; } }
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<style>
+  /* ---- intro reveal (once per visit) ---- */
+  #intro { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; background: var(--accent); color: var(--accent-contrast); transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.4s ease; }
+  #intro .name { font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.6rem); letter-spacing: -0.02em; opacity: 0; transform: translateY(10px); animation: introName 0.6s ease 0.1s forwards; }
+  #intro .kick { position: absolute; bottom: 14vh; left: 0; right: 0; text-align: center; font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0; animation: introName 0.6s ease 0.35s forwards; }
+  #intro.out { transform: translateY(-100%); }
+  @keyframes introName { to { opacity: 1; transform: none; } }
+  html.intro-active body > *:not(#intro) { opacity: 0; }
+  html.intro-active.intro-done body > *:not(#intro) { opacity: 1; transition: opacity 0.5s ease; }
+  @media (prefers-reduced-motion: reduce) { #intro { display: none; } html.intro-active body > *:not(#intro) { opacity: 1; } }
+</style>
 </head>
 <body>
+<script>
+(function(){
+  try {
+    if (sessionStorage.getItem('introShown')) return;
+    sessionStorage.setItem('introShown','1');
+  } catch (e) {}
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('intro-active');
+  var FLAG = '<svg class="flag" viewBox="0 0 19 10" aria-hidden="true" focusable="false">'
+    + '<rect width="19" height="10" fill="#fff"/>'
+    + '<g fill="#B22234"><rect width="19" height=".77"/><rect y="1.54" width="19" height=".77"/><rect y="3.08" width="19" height=".77"/><rect y="4.62" width="19" height=".77"/><rect y="6.15" width="19" height=".77"/><rect y="7.69" width="19" height=".77"/><rect y="9.23" width="19" height=".77"/></g>'
+    + '<rect width="7.6" height="5.38" fill="#3C3B6E"/>'
+    + '<g fill="#fff"><circle cx=".76" cy=".67" r=".28"/><circle cx="2.28" cy=".67" r=".28"/><circle cx="3.8" cy=".67" r=".28"/><circle cx="5.32" cy=".67" r=".28"/><circle cx="6.84" cy=".67" r=".28"/><circle cx=".76" cy="2.02" r=".28"/><circle cx="2.28" cy="2.02" r=".28"/><circle cx="3.8" cy="2.02" r=".28"/><circle cx="5.32" cy="2.02" r=".28"/><circle cx="6.84" cy="2.02" r=".28"/><circle cx=".76" cy="3.36" r=".28"/><circle cx="2.28" cy="3.36" r=".28"/><circle cx="3.8" cy="3.36" r=".28"/><circle cx="5.32" cy="3.36" r=".28"/><circle cx="6.84" cy="3.36" r=".28"/><circle cx=".76" cy="4.71" r=".28"/><circle cx="2.28" cy="4.71" r=".28"/><circle cx="3.8" cy="4.71" r=".28"/><circle cx="5.32" cy="4.71" r=".28"/><circle cx="6.84" cy="4.71" r=".28"/></g>'
+    + '</svg>';
+  document.write('<div id="intro" aria-hidden="true"><div class="name">Gilbert Renteria' + FLAG + '</div><div class="kick">Operations &middot; Data &middot; AI-Assisted Software</div></div>');
+  window.addEventListener('DOMContentLoaded', function(){
+    var el = document.getElementById('intro');
+    setTimeout(function(){ document.documentElement.classList.add('intro-done'); el.classList.add('out'); }, 1050);
+    setTimeout(function(){ el.remove(); document.documentElement.classList.remove('intro-active','intro-done'); }, 1750);
+  });
+})();
+</script>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top">Gilbert Renteria</a>
+    <a class="brand" href="#top">Gilbert Renteria<svg class="flag" viewBox="0 0 19 10" role="img" aria-label="United States" focusable="false"><rect width="19" height="10" fill="#fff"/><g fill="#B22234"><rect width="19" height=".77"/><rect y="1.54" width="19" height=".77"/><rect y="3.08" width="19" height=".77"/><rect y="4.62" width="19" height=".77"/><rect y="6.15" width="19" height=".77"/><rect y="7.69" width="19" height=".77"/><rect y="9.23" width="19" height=".77"/></g><rect width="7.6" height="5.38" fill="#3C3B6E"/><g fill="#fff"><circle cx=".76" cy=".67" r=".28"/><circle cx="2.28" cy=".67" r=".28"/><circle cx="3.8" cy=".67" r=".28"/><circle cx="5.32" cy=".67" r=".28"/><circle cx="6.84" cy=".67" r=".28"/><circle cx=".76" cy="2.02" r=".28"/><circle cx="2.28" cy="2.02" r=".28"/><circle cx="3.8" cy="2.02" r=".28"/><circle cx="5.32" cy="2.02" r=".28"/><circle cx="6.84" cy="2.02" r=".28"/><circle cx=".76" cy="3.36" r=".28"/><circle cx="2.28" cy="3.36" r=".28"/><circle cx="3.8" cy="3.36" r=".28"/><circle cx="5.32" cy="3.36" r=".28"/><circle cx="6.84" cy="3.36" r=".28"/><circle cx=".76" cy="4.71" r=".28"/><circle cx="2.28" cy="4.71" r=".28"/><circle cx="3.8" cy="4.71" r=".28"/><circle cx="5.32" cy="4.71" r=".28"/><circle cx="6.84" cy="4.71" r=".28"/></g></svg></a>
     <ul>
       <li><a href="#work">Work</a></li>
       <li class="hide-sm"><a href="#how">How I Work</a></li>
-      <li><a href="#background">Background</a></li>
+      <li class="hide-xs"><a href="#background">Background</a></li>
       <li><a href="#contact">Contact</a></li>
       <li class="hide-sm"><a href="https://github.com/gilbertrenteria" target="_blank" rel="noopener">GitHub</a></li>
       <li><button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -221,8 +280,18 @@
     <span>English &amp; Spanish</span>
     <span>UT Dallas Data Analytics certificate (2026)</span>
     <span>A.S. Business Administration</span>
+    <span>Resume updated Sep 24, 2026</span>
   </div>
 </header>
+
+<section class="wrap reveal numbers" aria-label="By the numbers">
+  <div class="num-grid">
+    <div class="card num"><div class="n">11+</div><div class="l">years as an owner-operator</div></div>
+    <div class="card num"><div class="n">20–60</div><div class="l">crew coordinated daily across 4–5 job sites</div></div>
+    <div class="card num"><div class="n">10</div><div class="l">project managers coordinated at peak</div></div>
+    <div class="card num"><div class="n">300+</div><div class="l">customer reviews earned at Little Cancun</div></div>
+  </div>
+</section>
 
 <section id="work" class="wrap">
   <h2>Work</h2>
@@ -331,6 +400,8 @@
       <div class="chips"><span>P&amp;L ownership</span><span>Process &amp; SOP design</span><span>Vendor &amp; contractor management</span><span>Scheduling &amp; capacity</span><span>Cash-flow management</span><span>Bilingual (EN/ES)</span></div>
       <h4>Education</h4>
       <div class="chips"><span>Data Analytics Certificate — UT Dallas / Fullstack Academy, 2026</span><span>A.S. Business Administration — San Jacinto College</span></div>
+      <h4>Before all this</h4>
+      <p>Competed internationally as a boxer for Team USA. That's where I learned that performance under pressure comes from having the right system, not just effort.</p>
     </div>
   </div>
 </section>
@@ -369,6 +440,16 @@
     var io=new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
     els.forEach(function(el){ io.observe(el); });
   } else { els.forEach(function(el){ el.classList.add('in'); }); }
+  // resume download ping (fire-and-forget; never blocks the link)
+  var ping='/api/resume-download';
+  document.querySelectorAll('a[href$="Gilbert-Renteria-Resume.pdf"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      try{
+        if(navigator.sendBeacon && navigator.sendBeacon(ping)) return;
+        if(window.fetch) fetch(ping,{method:'POST',keepalive:true}).catch(function(){});
+      }catch(e){}
+    });
+  });
 })();
 </script>
 
@@ -382,19 +463,19 @@
     <button class="ask-close" id="askClose" type="button" aria-label="Close">&times;</button>
   </div>
   <div class="ask-log" id="askLog">
-    <div class="msg bot">Hi — I'm an assistant Gilbert built for this site. Ask me about the tools he's shipped, how he ran his businesses, or how he'd approach an ops or data problem.</div>
+    <div class="msg bot">Hi, I'm Gilbert (well, an AI version of me). Ask about the tools I've shipped, how I ran my businesses, or how I'd approach an ops or data problem.</div>
   </div>
   <div class="ask-sugg" id="askSugg">
-    <button type="button">What did he build for Flash?</button>
+    <button type="button">What did you build for Flash?</button>
     <button type="button">How does HelloBob avoid texting people illegally?</button>
-    <button type="button">Why no bachelor's degree?</button>
-    <button type="button">How would he fix a messy quoting process?</button>
+    <button type="button">What's the biggest operation you've run?</button>
+    <button type="button">How would you fix a messy quoting process?</button>
   </div>
   <form class="ask-form" id="askForm" autocomplete="off">
     <input id="askInput" type="text" maxlength="1200" placeholder="Ask anything about my work…" aria-label="Your question">
     <button type="submit" id="askSend" aria-label="Send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4z"/></svg></button>
   </form>
-  <div class="ask-note">AI-generated from Gilbert's resume and projects. For anything else, email gilbertrenteria@yahoo.com.</div>
+  <div class="ask-note">AI-generated from my resume and projects. For anything else, email me at gilbertrenteria@yahoo.com.</div>
 </div>
 
 <script>
