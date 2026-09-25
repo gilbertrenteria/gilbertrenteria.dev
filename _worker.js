@@ -164,7 +164,18 @@ export default {
       return json({ days, total_questions: items.length, by_day: byDay, resume_downloads_total: resume, questions: items.map(i => ({ when: new Date(i.t).toISOString(), q: i.q, first_turn: i.first })) }, 200, { ...cors, "cache-control": "no-store" });
     }
     if (url.pathname !== "/api/chat") {
+      // Keep the site out of search engines, but let link-preview bots (LinkedIn, Slack, iMessage, etc.) read the
+      // Open Graph tags so a pasted link shows a proper card.
+      const ua = request.headers.get("User-Agent") || "";
+      const previewBot = /LinkedInBot|Twitterbot|facebookexternalhit|Slackbot|WhatsApp|TelegramBot|Discordbot|Applebot|iMessageLinkPreview|SkypeUriPreview|Embedly/i.test(ua);
       const res = await env.ASSETS.fetch(request);
+      if (previewBot) {
+        const ct = res.headers.get("content-type") || "";
+        if (ct.includes("text/html")) {
+          return new HTMLRewriter().on('meta[name="robots"]', { element(e) { e.remove(); } }).transform(res);
+        }
+        return res;
+      }
       const h = new Headers(res.headers); h.set("X-Robots-Tag", "noindex, nofollow, noarchive");
       return new Response(res.body, { status: res.status, statusText: res.statusText, headers: h });
     }

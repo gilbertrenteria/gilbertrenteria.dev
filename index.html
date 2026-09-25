@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
 <title>Gilbert Renteria — Operator who builds</title>
 <meta name="description" content="Gilbert Renteria: 11 years running businesses in construction and hospitality, now building AI-assisted business software on Cloudflare. Houston, TX · remote.">
 <meta property="og:title" content="Gilbert Renteria — Operator who builds">
@@ -68,7 +68,7 @@
   .hero-row, .hero h1, .hero p.lead, .hero .btns, .hero .facts { position: relative; }
   .hero-row { display: flex; align-items: center; gap: 28px; }
   .avatar { width: 132px; height: 132px; border-radius: 50%; flex: 0 0 auto; border: 4px solid var(--surface); box-shadow: var(--shadow); object-fit: cover; }
-  @media (max-width: 640px) { .hero-row { flex-direction: column; align-items: flex-start; gap: 18px; } .avatar { width: 96px; height: 96px; } }
+  @media (max-width: 640px) { .hero-row { flex-direction: column; align-items: flex-start; gap: 18px; } .avatar { width: 96px; height: 96px; } .hero::before { left: -60px; width: calc(100% + 60px); } }
   .status-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 8px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 16px; box-shadow: var(--shadow); }
   .status-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: #2fa06a; box-shadow: 0 0 0 4px rgba(47,160,106,0.18); }
 
@@ -94,6 +94,8 @@
   nav ul a:hover { color: var(--text); text-decoration: none; }
   @media (max-width: 560px) { nav ul li.hide-sm { display: none; } nav ul { gap: 12px; font-size: 0.74rem; } }
   @media (max-width: 430px) { nav .wrap { gap: 12px; } nav .brand { font-size: 0.94rem; } nav ul { gap: 10px; font-size: 0.7rem; } nav ul li.hide-xs { display: none; } }
+  /* touch: 40px+ tap targets in the nav without changing the visual weight */
+  @media (max-width: 820px) { nav .brand, nav ul a { display: inline-flex; align-items: center; min-height: 40px; } .theme-btn { width: 40px; height: 40px; } }
 
   /* US flag mark next to the name */
   .flag { display: inline-block; height: 0.85em; width: auto; aspect-ratio: 19 / 10; vertical-align: middle; position: relative; top: -0.08em; margin-left: 0.4em; border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,0.12); flex: 0 0 auto; }
@@ -129,6 +131,7 @@
   .project .shots { display: grid; gap: 10px; }
   .project .shots img { width: 100%; height: auto; display: block; }
   .project .shots .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 480px) { .project .shots .pair { grid-template-columns: 1fr; } }
   .project h3 { margin: 0 0 4px; font-size: 1.3rem; letter-spacing: -0.01em; }
   .project .role { color: var(--muted); font-size: 0.9rem; margin-bottom: 12px; }
   .project .status { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-left: 8px; vertical-align: middle; }
@@ -178,14 +181,14 @@
   .ask-fab:hover { transform: translateY(-2px); }
   .ask-fab img { width: 30px; height: 30px; border-radius: 50%; }
   .ask-fab .badge { width: 9px; height: 9px; border-radius: 50%; background: #2fa06a; box-shadow: 0 0 0 3px rgba(47,160,106,0.2); }
-  .ask-panel { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: min(400px, calc(100vw - 36px)); height: min(600px, calc(100vh - 36px)); display: none; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 22px; box-shadow: var(--shadow-hover); overflow: hidden; transform-origin: bottom right; }
+  .ask-panel { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: min(400px, calc(100vw - 36px)); height: min(600px, calc(100vh - 36px)); height: min(600px, calc(100dvh - 36px)); display: none; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 22px; box-shadow: var(--shadow-hover); overflow: hidden; transform-origin: bottom right; }
   .ask-panel.open { display: flex; animation: askIn 0.22s ease; }
   @keyframes askIn { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: none; } }
   .ask-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--border); background: var(--surface-alt); }
   .ask-head img { width: 34px; height: 34px; border-radius: 50%; }
   .ask-head b { display: block; font-size: 0.95rem; }
   .ask-head small { color: var(--muted); font-size: 0.76rem; }
-  .ask-close { margin-left: auto; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; font-size: 1rem; line-height: 1; }
+  .ask-close { margin-left: auto; flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; font-size: 1rem; line-height: 1; }
   .ask-close:hover { color: var(--text); border-color: var(--accent); }
   .ask-log { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
   .msg { max-width: 86%; padding: 10px 13px; border-radius: 18px; font-size: 0.92rem; line-height: 1.45; white-space: pre-wrap; word-wrap: break-word; }
@@ -195,7 +198,7 @@
   .msg.typing span:nth-child(2) { animation-delay: 0.2s; } .msg.typing span:nth-child(3) { animation-delay: 0.4s; }
   @keyframes blink { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
   .ask-sugg { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px; }
-  .ask-sugg button { font-family: inherit; font-size: 0.78rem; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; }
+  .ask-sugg button { font-family: inherit; font-size: 0.78rem; text-align: left; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; }
   .ask-sugg button:hover { border-color: var(--accent); color: var(--accent); }
   .ask-form { display: flex; gap: 8px; padding: 10px 12px 12px; border-top: 1px solid var(--border); background: var(--surface); }
   .ask-form input { flex: 1; font-family: inherit; font-size: 0.92rem; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-alt); color: var(--text); outline: none; }
@@ -204,6 +207,8 @@
   .ask-form button:disabled { opacity: 0.5; cursor: default; }
   .ask-note { font-size: 0.7rem; color: var(--muted); text-align: center; padding: 0 12px 10px; }
   @media (prefers-reduced-motion: reduce) { .ask-panel.open { animation: none; } .msg.typing span { animation: none; opacity: 0.6; } }
+  /* phones: bigger close + suggestion targets; panel tracks the keyboard-shrunk viewport via dvh above */
+  @media (max-width: 560px) { .ask-close { width: 36px; height: 36px; } .ask-sugg button { padding: 8px 12px; } }
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 <style>
@@ -328,6 +333,10 @@
   <article class="project reveal">
     <div class="shots">
       <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/hellobob.jpg" alt="HelloBob landing page: Every unanswered message is a job for you" loading="lazy"></div>
+      <div class="pair">
+        <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/hellobob-chat.jpg" alt="Ask Bob website chat open on the HelloBob site, answering how missed calls are texted back, qualified, and booked" loading="lazy"></div>
+        <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/hellobob-dashboard.jpg" alt="HelloBob owner dashboard: appointments table with technicians and confirmed, complete, and cancelled statuses, plus the SMS conversations list" loading="lazy"></div>
+      </div>
     </div>
     <div>
       <h3>HelloBob — AI Virtual Front Desk <span class="status">Open Source</span></h3>
@@ -344,6 +353,7 @@
         <a href="https://gilbertrenteria.github.io/hellobob-backend/" target="_blank" rel="noopener">Demo site <span class="arrow">→</span></a>
         <a href="https://github.com/gilbertrenteria/hellobob-backend" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
       </div>
+      <div class="note">The Ask Bob chat and the owner dashboard run on a Node backend that isn't hosted yet, so they're shown as screenshots; the code for both is in the repo.</div>
     </div>
   </article>
 
