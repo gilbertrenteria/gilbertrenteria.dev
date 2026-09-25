@@ -78,6 +78,13 @@
   .frame .bar { display: flex; gap: 6px; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--surface); }
   .frame .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--border); display: block; }
   .frame .bar i:nth-child(1) { background: #f26d5b; } .frame .bar i:nth-child(2) { background: #f5bf4f; } .frame .bar i:nth-child(3) { background: #5fc26e; }
+  .frame img { cursor: zoom-in; }
+  .lightbox { position: fixed; inset: 0; z-index: 900; background: rgba(20,20,19,0.86); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+  .lightbox.open { display: flex; animation: lbIn 0.2s ease; }
+  .lightbox img { max-width: min(1400px, 96vw); max-height: 92vh; width: auto; height: auto; border-radius: 12px; box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6); background: #fff; }
+  .lightbox .lb-cap { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; color: #f1efe9; font-size: 0.9rem; padding: 0 24px; }
+  .lightbox .lb-x { position: absolute; top: 14px; right: 16px; width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); background: rgba(0,0,0,0.35); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; }
+  @keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
   .frame img { display: block; width: 100%; height: auto; border: none; border-radius: 0; transition: transform 0.5s ease; }
   .frame:hover img { transform: scale(1.02); }
   body { margin: 0; background: var(--bg); color: var(--text); font-family: "IBM Plex Sans", -apple-system, Segoe UI, sans-serif; font-size: 16px; line-height: 1.55; }
@@ -111,6 +118,10 @@
   .num .l { margin-top: 4px; font-size: 0.85rem; line-height: 1.35; color: var(--muted); }
 
   .hero { padding-block: 72px 56px; }
+  .looking { margin: 18px 0 6px; padding: 10px 14px; border-radius: var(--r-sm); background: var(--accent-soft); color: var(--text); font-size: 0.92rem; line-height: 1.5; display: inline-block; max-width: 100%; }
+  .looking .lk { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-right: 8px; }
+  .looking b { font-weight: 600; }
+
   .hero .kicker { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
   .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 18px; max-width: 18ch; }
   .hero p.lead { font-size: 1.12rem; color: var(--muted); max-width: 60ch; margin: 0 0 26px; }
@@ -280,6 +291,7 @@
     <a class="btn" href="https://www.linkedin.com/in/gilbertrenteria" target="_blank" rel="noopener">LinkedIn</a>
     <a class="btn" href="Gilbert-Renteria-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
   </div>
+  <div class="looking"><span class="lk">Looking for</span> Revenue Ops · Sales Ops · Business Operations · Data Analyst · AI &amp; Automation — <b>remote, available now</b></div>
   <div class="facts">
     <span>Houston, TX · remote</span>
     <span>English &amp; Spanish</span>
@@ -352,6 +364,8 @@
       <div class="links">
         <a href="https://gilbertrenteria.github.io/hellobob-backend/" target="_blank" rel="noopener">Demo site <span class="arrow">→</span></a>
         <a href="https://github.com/gilbertrenteria/hellobob-backend" target="_blank" rel="noopener">Source on GitHub <span class="arrow">→</span></a>
+        <a href="img/hellobob-chat.jpg" class="lb-link" data-cap="Ask Bob website chat (screenshot; backend not hosted yet)">See the chat <span class="arrow">→</span></a>
+        <a href="img/hellobob-dashboard.jpg" class="lb-link" data-cap="Owner dashboard with demo data (screenshot; backend not hosted yet)">See the dashboard <span class="arrow">→</span></a>
       </div>
       <div class="note">The Ask Bob chat and the owner dashboard run on a Node backend that isn't hosted yet, so they're shown as screenshots; the code for both is in the repo.</div>
     </div>
@@ -523,5 +537,20 @@
 
 <footer class="wrap">© 2026 Gilbert Renteria · Houston, TX · Built by hand, deployed on Cloudflare Pages.</footer>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged screenshot"><button class="lb-x" type="button" aria-label="Close">&times;</button><img alt=""><div class="lb-cap"></div></div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'), im=lb.querySelector('img'), cap=lb.querySelector('.lb-cap');
+  function close(){ lb.classList.remove('open'); im.src=''; document.body.style.overflow=''; }
+  document.querySelectorAll('.frame img').forEach(function(t){
+    t.addEventListener('click', function(){ im.src=t.currentSrc||t.src; im.alt=t.alt||''; cap.textContent=t.alt||''; lb.classList.add('open'); document.body.style.overflow='hidden'; });
+  });
+  document.querySelectorAll('a.lb-link').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); im.src=a.getAttribute('href'); im.alt=a.dataset.cap||''; cap.textContent=a.dataset.cap||''; lb.classList.add('open'); document.body.style.overflow='hidden'; });
+  });
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('open')) close(); });
+})();
+</script>
 </body>
 </html>
